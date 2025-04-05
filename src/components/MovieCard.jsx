@@ -1,8 +1,20 @@
+import { easeIn } from 'motion';
+import { motion } from 'motion/react';
+
 const MovieCard = ({
   movie: { title, vote_average, poster_path, release_date, original_language },
 }) => {
   return (
-    <div className='movie-card'>
+    <motion.div
+      animate={{ scale: 1, opacity: 1 }}
+      whileHover={{
+        scale: 1.02,
+        cursor: 'pointer',
+      }}
+      transition={{ ease: 'easeOut', duration: 0.2 }}
+      whileTap={{ scale: 0.98 }}
+      className='movie-card'
+    >
       <img
         src={
           poster_path
@@ -26,7 +38,7 @@ const MovieCard = ({
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 export default MovieCard;
